@@ -112,7 +112,7 @@ class PGoApi:
 
 
     def set_srcinterface(self,iface):
-        self.log.info('Set interface ip: %s', iface)        
+        self.log.info('Set interface ip inside pgoapi: %s', iface)        
         self._interface_bind = iface
         
     def get_srcinterface(self):
