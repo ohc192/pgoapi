@@ -61,7 +61,7 @@ class JSONByteEncoder(JSONEncoder):
 def get_pos_by_name(location_name):
     #geolocator = GoogleV3()
     #loc = geolocator.geocode(location_name, timeout=10)
-    if not loc:
+    if loc is None:
     #pprint.pprint(locals())
         pprint.pprint(location_name)
         log.info("converting to native format")
