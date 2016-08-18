@@ -34,7 +34,7 @@ import logging
 import requests
 import subprocess
 import six
-from requests_toolbelt.adapters import source
+
 
 from google.protobuf import message
 

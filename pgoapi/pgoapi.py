@@ -29,6 +29,7 @@ import re
 import six
 import logging
 import requests
+from requests_toolbelt.adapters import source
 
 from . import __title__, __version__, __copyright__
 from pgoapi.rpc_api import RpcApi
