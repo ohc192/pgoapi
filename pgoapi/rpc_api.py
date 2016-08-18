@@ -60,11 +60,8 @@ class RpcApi:
     START_TIME = 0
     #srcipdef=[ ('192.95.16.43', 'https://pgorelease.nianticlabs.com'), ('192.95.16.43', 'http://pgorelease.nianticlabs.com')]
 
-<<<<<<< HEAD
-    def __init__(self, auth_provider, proxy_config=None,srcipdef=None):
-=======
-    def __init__(self, auth_provider):
->>>>>>> keyphact/master
+
+    def __init__(self, auth_provider,srcipdef=None):
 
         self.log = logging.getLogger(__name__)
         self.log.info('Source address passed to thread and into RPC: %s', srcipdef)

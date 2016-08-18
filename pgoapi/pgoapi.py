@@ -231,15 +231,9 @@ class PGoApiRequest:
 
         if self._auth_provider is None or not self._auth_provider.is_login():
             self.log.info('Not logged in')
-<<<<<<< HEAD
             return NotLoggedInException()
-        request = RpcApi(self._auth_provider, self._proxy,self._srcinterface)
+        request = RpcApi(self._auth_provider, ,self._srcinterface)
         #request = RpcApi(self._auth_provider, self._proxy)
-=======
-            raise NotLoggedInException()
-
-        request = RpcApi(self._auth_provider)
->>>>>>> keyphact/master
         request._session = self.__parent__._session
 
         lib_path = self.__parent__.get_signature_lib()
