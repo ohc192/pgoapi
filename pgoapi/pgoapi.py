@@ -63,11 +63,13 @@ class PGoApi:
         self._signature_lib = None
 
         self._session = requests.session()
+        if self._interface_bind is not None:
+            self.log.info('inside pgoapi init,ip is set.. using %s for IP', self._interface_bind)    
+            self._session.mount('http://', source.SourceAddressAdapter(self._interface_bind))
+            self._session.mount('https://', source.SourceAddressAdapter(self._interface_bind))
         self._session.headers.update({'User-Agent': 'Niantic App'})
         self._session.verify = True
-        if self._interface_bind is not None:
-            self._session.mount('http://', source.SourceAddressAdapter(self._interface_bind))
-            self._session.mount('https://', source.SourceAddressAdapter(self._interface_bind))            
+      
 
         if proxy_config is not None:
             self._session.proxies = proxy_config
