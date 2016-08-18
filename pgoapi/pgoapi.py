@@ -64,6 +64,9 @@ class PGoApi:
         self._session = requests.session()
         self._session.headers.update({'User-Agent': 'Niantic App'})
         self._session.verify = True
+        if self._interface_bind is not None:
+            self._session.mount('http://', source.SourceAddressAdapter(self._interface_bind))
+            self._session.mount('https://', source.SourceAddressAdapter(self._interface_bind))            
 
         if proxy_config is not None:
             self._session.proxies = proxy_config
@@ -117,11 +120,7 @@ class PGoApi:
         
     def get_srcinterface(self):
         return (self._interface_bind)
-
-    def kristestfunction(self):
-        print('wtf')
         
-
     def set_api_endpoint(self, api_url):
         self.log.info('Set api endpoint: %s', api_url)                        
         if api_url.startswith("https"):
@@ -232,10 +231,10 @@ class PGoApiRequest:
         if self._auth_provider is None or not self._auth_provider.is_login():
             self.log.info('Not logged in')
             return NotLoggedInException()
-        request = RpcApi(self._auth_provider, self._srcinterface)
-        #request = RpcApi(self._auth_provider, self._proxy)
+        request = RpcApi(self._auth_provider)
         request._session = self.__parent__._session
-
+    
+            
         lib_path = self.__parent__.get_signature_lib()
         if lib_path is not None:
             request.activate_signature(lib_path)

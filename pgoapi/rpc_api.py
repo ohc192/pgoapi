@@ -60,17 +60,10 @@ class RpcApi:
     START_TIME = 0
 
 
-    def __init__(self, auth_provider,srcipdef=None):
+    def __init__(self, auth_provider):
 
         self.log = logging.getLogger(__name__)
-        self.log.info('Source address passed to thread and into RPC: %s', srcipdef)
 
-        if srcipdef is not None:
-            self._session = requests.session()
-            self._session.headers.update({'User-Agent': 'Niantic App'})
-            self._session.verify = True
-            self._session.mount('http://', source.SourceAddressAdapter(srcipdef))
-            self._session.mount('https://', source.SourceAddressAdapter(srcipdef))        
 
         self._auth_provider = auth_provider
 
