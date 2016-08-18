@@ -46,10 +46,9 @@ logger = logging.getLogger(__name__)
 
 class PGoApi:
 
-    def __init__(self, provider=None, oauth2_refresh_token=None, username=None, password=None, position_lat=None, position_lng=None, position_alt=None, proxy_config=None):
+    def __init__(self, provider=None, oauth2_refresh_token=None, username=None, password=None, position_lat=None, position_lng=None, position_alt=None, proxy_config=None,interface_bind=None):
         self.set_logger()
         self.log.info('%s v%s - %s', __title__, __version__, __copyright__)
-        self._interface_bind = None
         self._auth_provider = None
         if provider is not None and ((username is not None and password is not None) or (oauth2_refresh_token is not None)):
             self.set_authentication(provider, oauth2_refresh_token, username, password, proxy_config)
@@ -59,6 +58,7 @@ class PGoApi:
         self._position_lat = position_lat
         self._position_lng = position_lng
         self._position_alt = position_alt
+        self._interface_bind = interface_bind
 
         self._signature_lib = None
 
