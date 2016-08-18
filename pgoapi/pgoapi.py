@@ -232,7 +232,7 @@ class PGoApiRequest:
         if self._auth_provider is None or not self._auth_provider.is_login():
             self.log.info('Not logged in')
             return NotLoggedInException()
-        request = RpcApi(self._auth_provider, ,self._srcinterface)
+        request = RpcApi(self._auth_provider, self._srcinterface)
         #request = RpcApi(self._auth_provider, self._proxy)
         request._session = self.__parent__._session
 
