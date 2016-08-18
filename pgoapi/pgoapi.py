@@ -64,7 +64,7 @@ class PGoApi:
 
         self._session = requests.session()
         if self._interface_bind is not None:
-            self.log.info('inside pgoapi init,ip is set.. using %s for IP', self._interface_bind)    
+            print('inside pgoapi init,ip is set.. using %s for IP' % self._interface_bind)    
             self._session.mount('http://', source.SourceAddressAdapter(self._interface_bind))
             self._session.mount('https://', source.SourceAddressAdapter(self._interface_bind))
         self._session.headers.update({'User-Agent': 'Niantic App'})
